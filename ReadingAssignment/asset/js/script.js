@@ -1,13 +1,29 @@
-import power from './exportDefault.js'
+// import power from './exportDefault.js'
 // Define UI Variables
+const closure = document.getElementById("closure");
 const exportDef = document.getElementById("exportDef");
 const iteratorGen = document.getElementById("iteratorGen");
 const setMap = document.getElementById("setMap");
 
 // Add Event Listeners
+closure.addEventListener("click", closures);
 exportDef.addEventListener("click", exportDefault);
 iteratorGen.addEventListener("click", iteratorGenDemo);
 setMap.addEventListener("click", setMapDemo);
+
+function closures() {
+    var add = (function () {
+        var counter = 0;
+        return function () {
+            counter += 1;           // The self-invoking function only runs once. It sets the counter to zero, and returns a function expression.
+            console.log(counter)    // The variable add is assigned to the return value of a self-invoking function.
+        }
+    })();
+    
+    add();
+    add();
+    add();
+}
 
 function exportDefault() {
     console.log(power(4));
