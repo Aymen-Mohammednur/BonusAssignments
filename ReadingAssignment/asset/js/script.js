@@ -1,10 +1,17 @@
+import power from './exportDefault.js'
 // Define UI Variables
-const setMap = document.getElementById("setMap");
+const exportDef = document.getElementById("exportDef");
 const iteratorGen = document.getElementById("iteratorGen");
+const setMap = document.getElementById("setMap");
 
 // Add Event Listeners
+exportDef.addEventListener("click", exportDefault);
 iteratorGen.addEventListener("click", iteratorGenDemo);
 setMap.addEventListener("click", setMapDemo);
+
+function exportDefault() {
+    console.log(power(4));
+}
 
 function* generateSequence() {
     yield 1;
