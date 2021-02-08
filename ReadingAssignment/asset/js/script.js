@@ -1,6 +1,8 @@
 // import power from './exportDefault.js'
 // Define UI Variables
 const taggedTemp = document.getElementById("taggedTemp");
+const passingFunc = document.getElementById("passingFunc");
+const returnFunc = document.getElementById("returnFunc");
 const closure = document.getElementById("closure");
 const exportDef = document.getElementById("exportDef");
 const iteratorGen = document.getElementById("iteratorGen");
@@ -8,6 +10,8 @@ const setMap = document.getElementById("setMap");
 
 // Add Event Listeners
 taggedTemp.addEventListener("click", taggedTemplates);
+passingFunc.addEventListener("click", passingFunction);
+returnFunc.addEventListener("click", returningFunction);
 closure.addEventListener("click", closures);
 exportDef.addEventListener("click", exportDefault);
 iteratorGen.addEventListener("click", iteratorGenDemo);
@@ -33,6 +37,29 @@ function taggedTemplates(age) {
     alert(`${str0}${str1}${name}${str2}${ageStr}${str4}`);
 }
 
+
+function passingFunction() {
+    function helloWorld() {
+        return "Hello World";
+    }
+    function message(text, name) {
+        alert(text() + name);
+    }
+    // Pass `helloWorld` as an argument to `message` function
+    message(helloWorld, ", I'm Aymen!");
+    // The function that we pass as an argument to another function, is called a Callback function. helloWorld is a Callback function.
+}
+
+function helloWorld() {
+    return function() {           // We can return a function because we treated function in JavaScript as a value.
+        alert("Hello, World");    // A function that returns a function is called a Higher-Order Function.
+    }
+}
+
+function returningFunction() {
+    helloWorld()(); // We are using double parentheses ()() to invoke the returned function as well.
+                    // If we invoked helloWorld directly, it would return the function itself without invoking its returned function.
+}
 
 function closures() {
     var add = (function () {
