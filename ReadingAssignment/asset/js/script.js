@@ -1,9 +1,57 @@
+// Define UI Variables
 const setMap = document.getElementById("setMap");
+const iteratorGen = document.getElementById("iteratorGen");
 
+// Add Event Listeners
+iteratorGen.addEventListener("click", iteratorGenDemo);
 setMap.addEventListener("click", setMapDemo);
+
+function* generateSequence() {
+    yield 1;
+    yield 2;
+    return 3;
+}
+
+function iteratorGenDemo() {
+    // Iterator
+    console.log("//// ITERATOR ////")
+    console.log("")
+    const numList = [1, 2, 3, 4, 5, 6];
+    const iterableList = numList[Symbol.iterator]();
+    var count = 0;
+
+    let result = iterableList.next();
+    while (!result.done) {
+    console.log(result.value); // 1 2 3 4 5 6
+    result = iterableList.next();
+    count++;
+    }
+
+    console.log("Iterated over list of size: " + count); // 6 numbers returned
+    console.log(iterableList);
+
+    // Generator
+    console.log("")
+    console.log("//// GENERATOR ////")
+    console.log("")
+
+    // "generator function" creates "generator object"
+    let generator = generateSequence();
+    // alert(generator); // [object Generator]
+    let one = generator.next();
+    console.log(JSON.stringify(one)); // {value: 1, done: false} done will be false untill the function code has finished
+
+    let two = generator.next();
+    console.log(JSON.stringify(two));
+
+    let final = generator.next();
+    console.log(JSON.stringify(final));
+}
 
 function setMapDemo() {
     // Set
+    console.log("//// SET ////")
+    console.log("")
     let mySet = new Set();
 
     mySet.add(1)           // [1]
@@ -35,6 +83,7 @@ function setMapDemo() {
     // Map
     console.log("")
     console.log("//// MAP ////")
+    console.log("")
     let myMap = new Map();
 
     let String = 'Name'

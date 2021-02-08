@@ -64,17 +64,24 @@
             <div class="row">
                 <div class="col-md-6 mt-4">
                     <h3>6. What are iterators and generators?</h3>
+                    <p>In JavaScript an iterator is an object which defines a sequence and potentially a return value upon its termination. 
+                        Once created, an iterator object can be iterated explicitly by repeatedly calling next().</p>
+                    <p>Generators can return (“yield”) multiple values, one after another, on-demand. They work great with iterables, allowing us to create data streams with ease. 
+                        Generator functions are written using the function* syntax. When a value is consumed by calling the generator's next method, the Generator function 
+                        executes until it encounters the yield keyword.</p>
                 </div>
                 <div class="col-md-6 mt-4">
-                    <button class="btn btn-success btn-lg">DEMO</button>
+                    <button class="btn btn-success btn-lg" id="iteratorGen">DEMO</button>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-md-6 mt-4">
                     <h3>7. What are Sets and Maps in JS?</h3>
-                    <p>The Set object lets us store unique values of any type, whether primitive values or object references. A value in a Set may only occur once(no duplicate items); it is unique in the Set's collection.</p>
-                    <p>The Map object holds key-value pairs and remembers the original insertion order of the keys. Any value (both objects and primitive values) may be used as either a key or a value.</p>
+                    <p>The Set object lets us store unique values of any type, whether primitive values or object references. 
+                        A value in a Set may only occur once(no duplicate items); it is unique in the Set's collection.</p>
+                    <p>The Map object holds key-value pairs and remembers the original insertion order of the keys. 
+                        Any value (both objects and primitive values) may be used as either a key or a value.</p>
                 </div>
                 <div class="col-md-6 mt-4">
                     <button class="btn btn-success btn-lg" id="setMap">DEMO</button>
