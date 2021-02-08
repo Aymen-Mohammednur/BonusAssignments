@@ -4,6 +4,7 @@ const taggedTemp = document.getElementById("taggedTemp");
 const passingFunc = document.getElementById("passingFunc");
 const returnFunc = document.getElementById("returnFunc");
 const closure = document.getElementById("closure");
+const reflect = document.getElementById("reflect");
 const exportDef = document.getElementById("exportDef");
 const iteratorGen = document.getElementById("iteratorGen");
 const setMap = document.getElementById("setMap");
@@ -13,6 +14,7 @@ taggedTemp.addEventListener("click", taggedTemplates);
 passingFunc.addEventListener("click", passingFunction);
 returnFunc.addEventListener("click", returningFunction);
 closure.addEventListener("click", closures);
+reflect.addEventListener("click", reflectAPI);
 exportDef.addEventListener("click", exportDefault);
 iteratorGen.addEventListener("click", iteratorGenDemo);
 setMap.addEventListener("click", setMapDemo);
@@ -73,6 +75,43 @@ function closures() {
     add();
     add();
     add();
+}
+
+function reflectAPI() {
+    // construction and method call
+    class Person {
+        constructor(firstName, lastName) {
+            this.firstName = firstName;
+            this.lastName = lastName;
+        }
+        get fullName() {
+            return `${this.firstName} ${this.lastName}`;
+        }
+    };
+    
+    let names = ['Aymen', 'Moh'];
+    let john = Reflect.construct(Person, names);
+    
+    console.log(john instanceof Person);
+    console.log(john.fullName);
+
+
+    // properties
+    const person = {
+        name: 'Aymen',
+        age: '21',
+        message: function() {
+            alert(`Hello, My name is ${this.name} and I am ${this.age} years old.`);
+        }
+    }
+    console.log(Reflect.has(person, 'age')); // true
+    console.log(Reflect.has(person, 'sex')); // false
+
+    console.log(Reflect.ownKeys(person));  // returns object's keys
+
+    console.log(Reflect.set(person, 'occupation', 'student'));  // returns true if its successful
+    console.log(person);
+    alert("Go to console");
 }
 
 function exportDefault() {
