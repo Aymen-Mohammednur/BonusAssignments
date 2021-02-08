@@ -1,22 +1,45 @@
 // import power from './exportDefault.js'
 // Define UI Variables
+const taggedTemp = document.getElementById("taggedTemp");
 const closure = document.getElementById("closure");
 const exportDef = document.getElementById("exportDef");
 const iteratorGen = document.getElementById("iteratorGen");
 const setMap = document.getElementById("setMap");
 
 // Add Event Listeners
+taggedTemp.addEventListener("click", taggedTemplates);
 closure.addEventListener("click", closures);
 exportDef.addEventListener("click", exportDefault);
 iteratorGen.addEventListener("click", iteratorGenDemo);
 setMap.addEventListener("click", setMapDemo);
+
+// Answers
+let name = "Aymen"
+function taggedTemplates(age) {
+    var age = 21;
+    let str0 =  "My name"
+    let str1 =  " is "
+    let str2 = " and I am "
+    let str4=  "."
+
+    let ageStr;
+    if (age > 20){
+        ageStr = 'a young adult';
+    } 
+    else {
+        ageStr = 'a teenager';
+    }
+
+    alert(`${str0}${str1}${name}${str2}${ageStr}${str4}`);
+}
+
 
 function closures() {
     var add = (function () {
         var counter = 0;
         return function () {
             counter += 1;           // The self-invoking function only runs once. It sets the counter to zero, and returns a function expression.
-            console.log(counter)    // The variable add is assigned to the return value of a self-invoking function.
+            alert(counter)    // The variable add is assigned to the return value of a self-invoking function.
         }
     })();
     
@@ -26,7 +49,7 @@ function closures() {
 }
 
 function exportDefault() {
-    console.log(power(4));
+    alert(power(4));
 }
 
 function* generateSequence() {
@@ -36,6 +59,7 @@ function* generateSequence() {
 }
 
 function iteratorGenDemo() {
+    
     // Iterator
     console.log("//// ITERATOR ////")
     console.log("")
@@ -69,6 +93,7 @@ function iteratorGenDemo() {
 
     let final = generator.next();
     console.log(JSON.stringify(final));
+    alert("Go to console")
 }
 
 function setMapDemo() {
@@ -127,4 +152,5 @@ function setMapDemo() {
     console.log(myMap.get({}))            // undefined, because Obj !== {}
 
     console.log(myMap);
+    alert("Go to console")
 }
