@@ -1,4 +1,4 @@
-// import power from './exportDefault.js'
+import power from './exportDefault.js'
 // Define UI Variables
 const taggedTemp = document.getElementById("taggedTemp");
 const passingFunc = document.getElementById("passingFunc");
