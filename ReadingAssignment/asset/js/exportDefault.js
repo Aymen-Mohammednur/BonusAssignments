@@ -1,3 +1,3 @@
-export default function power(num) {
-    return num * num;
+export default function (num) {
+    return num * num
 }

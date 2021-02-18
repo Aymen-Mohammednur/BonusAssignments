@@ -1,7 +1,7 @@
 let userr = localStorage.getItem('userScore');
 let aii = localStorage.getItem('aiScore');
 let userScore = userr? userr : 0;
-let aiScore = aii? aii : 1;
+let aiScore = aii? aii : 0;
 
 // userScore = parseInt(userScore);
 // aiScore = parseInt(aiScore);
@@ -114,7 +114,7 @@ function resetBall() {
 }
 
 // collision Detect function
-function collisionDetect(player, ball) {
+function collided(player, ball) {
   // returns true or false
   player.top = player.y;
   player.right = player.x + player.width;
@@ -155,7 +155,6 @@ function update() {
   // if ball hit on left wall
   if (ball.x - ball.radius <= 0) {
 
-    // then ai scored 1 point
     ai.score += 1;
     aiScore += 1;
     resetBall();
@@ -171,7 +170,7 @@ function update() {
   // collision detection on paddles
   let player = (ball.x < canvas.width / 2) ? user : ai;
 
-  if (collisionDetect(player, ball)) {
+  if (collided(player, ball)) {
 
     // default angle is 0deg in Radian
     let angle = 0;

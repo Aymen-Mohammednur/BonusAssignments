@@ -21,7 +21,7 @@ setMap.addEventListener("click", setMapDemo);
 
 // Answers
 let name = "Aymen"
-function taggedTemplates(age) {
+function taggedTemplates() {
     var age = 21;
     let str0 =  "My name"
     let str1 =  " is "
@@ -63,19 +63,22 @@ function returningFunction() {
                     // If we invoked helloWorld directly, it would return the function itself without invoking its returned function.
 }
 
+//var counter = 0;
 function closures() {
-    var add = (function () {
-        var counter = 0;
-        return function () {
-            counter += 1;           // The self-invoking function only runs once. It sets the counter to zero, and returns a function expression.
-            alert(counter)    // The variable add is assigned to the return value of a self-invoking function.
+    function adder(num1) {
+        function add(num2) {
+            return num1 + num2;
         }
-    })();
-    
-    add();
-    add();
-    add();
+        return add;
+    }
+
+    var addOne = adder(1);
+    var addTwo = adder(2);
+
+    console.log(addOne(10));
+    console.log(addTwo(10));
 }
+
 
 function reflectAPI() {
     // construction and method call
@@ -99,10 +102,7 @@ function reflectAPI() {
     // properties
     const person = {
         name: 'Aymen',
-        age: '21',
-        message: function() {
-            alert(`Hello, My name is ${this.name} and I am ${this.age} years old.`);
-        }
+        age: '21'
     }
     console.log(Reflect.has(person, 'age')); // true
     console.log(Reflect.has(person, 'sex')); // false
@@ -111,7 +111,7 @@ function reflectAPI() {
 
     console.log(Reflect.set(person, 'occupation', 'student'));  // returns true if its successful
     console.log(person);
-    alert("Go to console");
+    console.log(Reflect.ownKeys(person));
 }
 
 function exportDefault() {
@@ -120,7 +120,7 @@ function exportDefault() {
 
 function* generateSequence() {
     yield 1;
-    yield 2;
+    return 2;
     return 3;
 }
 
@@ -159,7 +159,6 @@ function iteratorGenDemo() {
 
     let final = generator.next();
     console.log(JSON.stringify(final));
-    alert("Go to console")
 }
 
 function setMapDemo() {
@@ -173,9 +172,11 @@ function setMapDemo() {
     mySet.add(3)           // [1, 3]
     mySet.add(3)           // [1, 3]
     mySet.add('Hello')     // [1, 3, 'Hello']
+    console.log(mySet)
 
     let obj = {name: 'Aymen', age: '21'}
     mySet.add(obj)
+    //console.log(mySet)
 
     console.log(mySet.has(1))              // true
     console.log(mySet.has(2))              // false
@@ -183,10 +184,10 @@ function setMapDemo() {
     console.log(mySet.has('Hello'.toLowerCase())) // false, it is case sensitive
     console.log(mySet.has(obj))           // true
 
-    console.log(mySet.size)         // 5
+    console.log(mySet.size)         // 4
 
-    mySet.delete(5)    // removes 5 from the set
-    console.log(mySet.has(5))       // false
+    mySet.delete(3)    // removes 3 from the set
+    console.log(mySet.has(3))       // false
 
     // Used to remove duplicate elements from the array
     const numbers = [2,3,4,4,2,3,3,4,4,5,5,6,6,7,5,3,4,5]
@@ -206,7 +207,6 @@ function setMapDemo() {
     // setting the values
     myMap.set(String, "Aymen Moh")
     myMap.set(Obj, "{age: '21', work: 'student}")
-    myMap.set(true, "boolean")
 
     console.log(myMap.size)              // 2
 
@@ -215,8 +215,5 @@ function setMapDemo() {
     console.log(myMap.get(Obj))       
     console.log(myMap.get('Name'))
 
-    console.log(myMap.get({}))            // undefined, because Obj !== {}
-
     console.log(myMap);
-    alert("Go to console")
 }
